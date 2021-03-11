@@ -5,9 +5,9 @@ public class TrueOrFalse {
 	public static void main(String[] args) {
 		int date = 0;
 		if(date < 1) {
-			System.out.println("ˆø”‚ª0‚È‚ç‹UB");
+			System.out.println("å¼•æ•°ãŒ0ãªã‚‰å½");
 		} else {
-			System.out.println("ˆø”‚ª1‚È‚ç^B");
+			System.out.println("å¼•æ•°ãŒ1ãªã‚‰çœŸ");
 		}
 
 	}
