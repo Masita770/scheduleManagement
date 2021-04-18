@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+<html xmls:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>スケジュールマネジメント</title>
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<script src="/js/boostrap.js"></script>
+
+</head>
+
+<body>
+	<div class="container>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>名前</th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			<tr th:each="user:${user}" th:object="${user}">
+			
+				<td th:text="*{id}></td>
+				<td th:text="*{name}"></td>
+				
+				<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}(id=*{id})}">参照</a></td>
+				<td><a class="btn btn-default btn-xs" th:href="@{/players/{id}/edit(id=*{id})}">編集</a></td>
+				<td>
+				
+					<form th:acrion=@{/players/{id}(id=*{id})}" th:method="delete">
+						<input class="btn btn-default btn-xs" type="submit" value="削除" />
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<a class="btn btn-default" href="/players/new">新規作成</a>
+</div>
+</body>
+</html>
