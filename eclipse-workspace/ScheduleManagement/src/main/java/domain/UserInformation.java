@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity
 @Table(name="userData")
 public class UserInformation {
@@ -37,10 +39,5 @@ public class UserInformation {
 	
 	public void setPosition(String position) {
 		this.position = position;
-	}
-
-	@Override
-	public String toString() {
-		return "UserInformation [id=" + id + ", name=" + name + ",position=" + position;
 	}
 }
