@@ -1,4 +1,4 @@
-package domain;
+package com.example.config.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="userData")
+@Table(name="userdata")
 public class UserInformation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
