@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<chrset=UTF-8>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<head>
+		<h1>制作中</h1>
 	</head>
+		<div th:each="UserInformation : ${allData}">
+			<p th:text="${UserInformation.content}"></p>
+		</div>
 </html>
 	

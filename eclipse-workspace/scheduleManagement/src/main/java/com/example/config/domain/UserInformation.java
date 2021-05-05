@@ -9,13 +9,13 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="userdata")
+@Table(name="accountdata")
 public class UserInformation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String position;
+	private int schedule;
 	
 	public Long getId() {
 		return id;
@@ -33,11 +33,11 @@ public class UserInformation {
 		this.name = name;
 	}
 	
-	public String position() {
-		return position;
+	public int schedule() {
+		return schedule;
 	}
 	
-	public void setPosition(String position) {
-		this.position = position;
+	public void setSchedule(int schedule) {
+		this.schedule = schedule;
 	}
 }
