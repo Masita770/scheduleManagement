@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
 	<head>
 		<h1>制作中</h1>
 	</head>
-		<div th:each="UserInformation : ${allData}">
-			<p th:text="${UserInformation.content}"></p>
+	<body>
+		<div class="create-account">
+			<form method="POST" th:action="@{/}" th:object="${account}">
+				<p th:errors="*{name}" class="account-error-message"></p>
+				
+				<input type="text" th:field="*{account}">
+				<button type="submit">登録</button>
+			</form>
 		</div>
+		
+		<div th:each="account : ${allDate}">
+			<p th:text="${account.id}"></p>
+			<p th:text="${account.name}">さん</p>
+		</div>
+	</body>
 </html>
 	

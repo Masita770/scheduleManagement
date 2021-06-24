@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.config.domain.UserInformation;
 import com.example.config.repository.UserRepository;
+import com.example.config.domain.UserInformation;
 
 
 @Service
@@ -16,10 +16,10 @@ public class UserCalculation {
 	public UserRepository userRepository;
 	//*次回はここから
 	public List<UserInformation> searchAll() {
-		return userRepository.findAll();
+		return userRepository.findAll();	
 	}
 	
-	public void addAccount(UserInformation userInformation) {
+	public void addUserInformation(UserInformation userInforamation) {
 		userRepository.save(userInformation);
 	}
 }

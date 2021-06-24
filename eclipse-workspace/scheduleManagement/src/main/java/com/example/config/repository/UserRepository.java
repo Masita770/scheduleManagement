@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 import com.example.config.domain.UserInformation;
 
 @Repository
-@Component
 public interface UserRepository extends JpaRepository<UserInformation, Integer> {
 }
