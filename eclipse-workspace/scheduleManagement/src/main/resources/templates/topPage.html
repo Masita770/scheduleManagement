@@ -5,18 +5,18 @@
 		<h1>制作中</h1>
 	</head>
 	<body>
-		<div class="create-account">
-			<form method="POST" th:action="@{/}" th:object="${account}">
-				<p th:errors="*{name}" class="account-error-message"></p>
+		<div class="create-data">
+			<form method="POST" th:action="@{/topPage}" th:object="${data}">
+				<p th:errors="*{name}" class="data-error-message"></p>
 				
-				<input type="text" th:field="*{account}">
+				<input type="text" th:field="*{schedule}">
 				<button type="submit">登録</button>
 			</form>
 		</div>
 		
-		<div th:each="account : ${allDate}">
-			<p th:text="${account.id}"></p>
-			<p th:text="${account.name}">さん</p>
+		<div th:each="data : ${allDate}">
+			<p th:text="${data.id}"></p>
+			<p th:text="${data.name}">さん</p>
 		</div>
 	</body>
 </html>
