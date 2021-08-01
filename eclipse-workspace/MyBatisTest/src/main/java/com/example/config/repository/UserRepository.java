@@ -26,4 +26,8 @@ public class UserRepository {
 	public int create(UserInfo userInfo) {
 		return userMapper.insert(userInfo);
 	}
+	
+	public int update(UserInfo userInfo) {
+		return userMapper.update(userInfo);
+	}
 }

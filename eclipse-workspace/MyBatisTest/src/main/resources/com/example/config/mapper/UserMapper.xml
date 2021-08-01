@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.config.mapper.UserMapper">
 	<select id="findAll" resultType="UserInfo">
-		SELECT data_id, data_name, data_schedule FROM data WHERE data_id = #{dataId}
+		SELECT data_id, data_name, data_schedule FROM data　 WHERE data_id = #{dataId}
 	</select>
 	<select id="findAll" resultType="UserInfo">
 		SELECT data_id, data_name, data_schedule FROM data
@@ -10,4 +10,7 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO data (data_id, data_name, data_schedule) VALUES (#{data.name}, #{data.schedule})
 	</insert>
+	<update id="update">
+		UPDATE data SET name = #{data.name}, schedule = #{data.schedule}
+	</update>
 </mapper>

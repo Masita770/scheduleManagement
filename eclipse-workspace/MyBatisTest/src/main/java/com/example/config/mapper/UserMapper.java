@@ -10,5 +10,6 @@ public interface UserMapper {
 	List<UserInfo> findAll();
 	UserInfo get(@Param("id") Integer id);
 	int insert(@Param("userInfo") UserInfo userInfo);
+	int update(@Param("userInfo") UserInfo userInfo);
 
 }
