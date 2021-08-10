@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.config.domain.UserInfo;
 import com.example.config.service.UserService;
@@ -44,7 +45,15 @@ public class UserController {
 			return "topPage";
 		}
 		
-		userService.addAccount(userInfo);
+		userService.insert(userInfo);
+		return "redirect:/";
+	}
+	
+	@PostMapping("/schedule")
+	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
+		UserInfo updateUserInfo = userService.findById(Id);
+		updateUserInfo.getSchedule();
+		userService.insert(updateUserInfo);
 		return "redirect:/";
 	}
 }

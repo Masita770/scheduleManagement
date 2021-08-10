@@ -6,6 +6,7 @@ package com.example.config.repository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.config.domain.UserInfo;
 import com.example.config.mapper.UserMapper;
@@ -29,5 +30,12 @@ public class UserRepository {
 	
 	public int update(UserInfo userInfo) {
 		return userMapper.update(userInfo);
+	}
+
+	public Optional<UserInfo> findById(Integer id) {
+		return null;
+	}
+
+	public void save(UserInfo userInfo) {
 	}
 }

@@ -18,7 +18,6 @@ public class UserInfo {
 	private String name;
 	private String schedule;
 	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -48,3 +47,5 @@ public class UserInfo {
 	
 	//private String schedule;
 }
+
+	
