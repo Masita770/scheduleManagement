@@ -1,18 +1,23 @@
 package com.example.config.mapper;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.apache.ibatis.annotations.*;
-import org.mybatis.spring.annotation.MapperScan;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 
 import com.example.config.domain.UserInfo;
 
 @Mapper
-@MapperScan
 public interface UserMapper {
-	List<UserInfo> findAll();
-	UserInfo get(@Param("id") Integer id);
-	int insert(@Param("userInfo") UserInfo userInfo);
-	int update(@Param("userInfo") UserInfo userInfo);
+	
+	@Insert("INSERT INTO data (id, name, shcedule) VALUES (#{id}, #{name}, #{schedule}")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
+	void insertInfo(UserInfo userInfo);
+	Optional<UserInfo> findById(Integer id);
+	List<UserInfo> selectAll();
+	void save(UserInfo userInfo);
 
 }

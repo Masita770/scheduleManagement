@@ -45,7 +45,7 @@ public class UserController {
 			return "topPage";
 		}
 		
-		userService.insert(userInfo);
+		userService.addInfo(userInfo);
 		return "redirect:/";
 	}
 	
@@ -53,7 +53,7 @@ public class UserController {
 	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
 		UserInfo updateUserInfo = userService.findById(Id);
 		updateUserInfo.getSchedule();
-		userService.insert(updateUserInfo);
+		userService.addInfo(updateUserInfo);
 		return "redirect:/";
 	}
 }
