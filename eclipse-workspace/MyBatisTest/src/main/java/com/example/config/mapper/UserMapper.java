@@ -13,11 +13,16 @@ import com.example.config.domain.UserInfo;
 @Mapper
 public interface UserMapper {
 	
-	@Insert("INSERT INTO data (id, name, shcedule) VALUES (#{id}, #{name}, #{schedule}")
-	@Options(useGeneratedKeys = true, keyProperty = "id")
-	void insertInfo(UserInfo userInfo);
+	@Select("SELECT INTO data (id, name, shcedule) VALUES (#{id}, #{name}, #{schedule}")
 	Optional<UserInfo> findById(Integer id);
+	
 	List<UserInfo> selectAll();
 	void save(UserInfo userInfo);
+	
+	@Insert("INSERT INTO data (name, schedule, created_at) VALUES (#{schedule}")
+	@Options(useGeneratedKeys = true, keyProperty = "id")
+	void insertInfo(UserInfo userInfo);
+
+	//void save(UserInfo userInfo);
 
 }

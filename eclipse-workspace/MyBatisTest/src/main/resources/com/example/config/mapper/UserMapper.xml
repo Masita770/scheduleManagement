@@ -3,7 +3,7 @@
 <mapper namespace="com.example.config.mapper.UserMapper">
 
 	<select id="selectAll" resultType="com.example.config.domain.UserInfo">
-		SELECT * from data WHERE id = #{id}
+		SELECT * FROM data WHERE id = #{id}
 	</select>
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO data (data_id, data_name, data_schedule) VALUES (#{data.name}, #{data.schedule})

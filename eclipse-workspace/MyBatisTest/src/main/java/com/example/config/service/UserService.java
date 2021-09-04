@@ -12,13 +12,13 @@ import com.example.config.mapper.UserMapper;
 
 
 @Service
-@Transactional
+//@Transactional
 public class UserService {
 	
 	@Autowired
-	private UserMapper userMapper;
+	UserMapper userMapper;
 	
-	public List<UserInfo> searchAll() {
+	public List<UserInfo> getList() {
 		return userMapper.selectAll();
 	}
 	
