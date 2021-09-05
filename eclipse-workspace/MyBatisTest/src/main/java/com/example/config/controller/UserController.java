@@ -24,7 +24,7 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping("/topPage")
-	public String topPage(Model model) {
+	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
 //		UserInformation userInfo = new UserInformation();
@@ -36,7 +36,7 @@ public class UserController {
 		return "topPage";
 	}
 	
-	@PostMapping("/topPage")
+	@PostMapping("/")
 	public String createUser(@Valid UserInfo userInfo, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
 			List<UserInfo> allDate = userService.getList();
@@ -45,15 +45,15 @@ public class UserController {
 			return "topPage";
 		}
 		
-		//userService.addInfo(userInfo);
+		userService.addInfo(userInfo);
 		return "redirect:/";
 	}
 	
 	@PostMapping("/schedule")
 	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
-		//UserInfo updateUserInfo = userService.findById(Id);
-		//updateUserInfo.getSchedule();
-		//userService.addInfo(updateUserInfo);
+		UserInfo updateUserInfo = userService.findById(Id);
+		updateUserInfo.getSchedule();
+		userService.addInfo(updateUserInfo);
 		return "redirect:/";
 	}
 }
