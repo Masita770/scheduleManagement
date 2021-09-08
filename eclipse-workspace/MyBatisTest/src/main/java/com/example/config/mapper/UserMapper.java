@@ -23,6 +23,5 @@ public interface UserMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	void insertInfo(UserInfo userInfo);
 
-	//void save(UserInfo userInfo);
-
+	
 }
