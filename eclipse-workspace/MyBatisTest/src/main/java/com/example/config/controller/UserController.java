@@ -12,9 +12,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.ObjectError;
 
 import com.example.config.domain.UserInfo;
 import com.example.config.service.UserService;
+import com.example.config.dto.UserResponse;
 
 
 @Controller
@@ -36,17 +38,28 @@ public class UserController {
 		return "topPage";
 	}
 	
+	
+	//@GetMapping(value = "topPage")
+	//public String displayAdd(Model model) {
+		//model.addAttribute("userResponse", new UserResponse());
+		//return "topPage";
+	//}
+	
 	@PostMapping("/")
 	public String createUser(@Valid UserInfo userInfo, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			List<UserInfo> allDate = userService.getList();
-			model.addAttribute("allDate", allDate);
+			List<UserInfo> errorDate = userService.getList(); 
+			//入力チェックエラーの記述を行った（21/9/21）
+			for (ObjectError error : bindingResult.getAllErrors()) {
+			model.addAttribute("allDate", errorDate);
 			model.addAttribute("userInfo",userInfo);
+			}
+			model.addAttribute("validationError", errorDate);
 			return "topPage";
 		}
 		
 		userService.addInfo(userInfo);
-		return "redirect:/";
+		return "topPage";
 	}
 	
 	@PostMapping("/schedule")
