@@ -25,7 +25,8 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@GetMapping("/topPage")
+	//DBから取得したデータをオブジェクトへ
+	@GetMapping("/list")
 	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
@@ -35,7 +36,7 @@ public class UserController {
 //		allDate.add(userInfo);
 		model.addAttribute("allDate", allDate);
 		model.addAttribute("userInfo", new UserInfo());
-		return "topPage";
+		return "list";
 	}
 	
 	
