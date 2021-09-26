@@ -26,7 +26,7 @@ public class UserController {
 	UserService userService;
 	
 	//DBから取得したデータをオブジェクトへ
-	@GetMapping("/list")
+	@GetMapping("/signs/list")
 	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
@@ -36,34 +36,38 @@ public class UserController {
 //		allDate.add(userInfo);
 		model.addAttribute("allDate", allDate);
 		model.addAttribute("userInfo", new UserInfo());
+		return "signs/list";
+	}
+	
+	
+	@GetMapping(value = "signs/list")
+	public String displayAdd(Model model) {
+		//List<UserInfo> userResponse = userService.getList();
+		model.addAttribute("userResponse", new UserResponse());
 		return "list";
 	}
 	
-	
-	//@GetMapping(value = "topPage")
-	//public String displayAdd(Model model) {
-		//model.addAttribute("userResponse", new UserResponse());
-		//return "topPage";
-	//}
-	
 	@PostMapping("/")
 	public String createUser(@Valid UserInfo userInfo, BindingResult bindingResult, Model model) {
+		
 		if(bindingResult.hasErrors()) {
-			List<UserInfo> errorDate = userService.getList(); 
+			//List<UserInfo> errorList = userService.getList(); 
+			List<String> errorList = new ArrayList<String>();
 			//入力チェックエラーの記述を行った（21/9/21）
 			for (ObjectError error : bindingResult.getAllErrors()) {
-			model.addAttribute("allDate", errorDate);
-			model.addAttribute("userInfo",userInfo);
+			//model.addAttribute("allDate", errorDate);
+			//model.addAttribute("userInfo",userInfo);
+				errorList.add(error.getDefaultMessage());
 			}
-			model.addAttribute("validationError", errorDate);
-			return "topPage";
+			model.addAttribute("validationError", errorList);
+			return "signs/topPage";
 		}
 		
 		userService.addInfo(userInfo);
-		return "topPage";
+		return "signs/topPage";
 	}
 	
-	@PostMapping("/schedule")
+	@PostMapping("/signs/[schedule]")
 	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
 		UserInfo updateUserInfo = userService.findById(Id);
 		updateUserInfo.getSchedule();
