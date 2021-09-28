@@ -40,11 +40,12 @@ public class UserController {
 	}
 	
 	
-	@GetMapping(value = "signs/list")
+	@GetMapping(value = "signs/topPage")
 	public String displayAdd(Model model) {
-		//List<UserInfo> userResponse = userService.getList();
-		model.addAttribute("userResponse", new UserResponse());
-		return "list";
+		List<UserInfo> allDate = userService.getList();
+		model.addAttribute("allDate", allDate );
+		model.addAttribute("userInfo", new UserInfo());
+		return "topPage";
 	}
 	
 	@PostMapping("/")
