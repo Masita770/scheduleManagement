@@ -26,7 +26,7 @@ public class UserController {
 	UserService userService;
 	
 	//DBから取得したデータをオブジェクトへ
-	@GetMapping("/signs/list")
+	@GetMapping(value="signs/topPage")
 	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
@@ -40,27 +40,27 @@ public class UserController {
 	}
 	
 	
-	@GetMapping(value = "signs/topPage")
-	public String displayAdd(Model model) {
-		List<UserInfo> allDate = userService.getList();
-		model.addAttribute("allDate", allDate );
-		model.addAttribute("userInfo", new UserInfo());
-		return "topPage";
-	}
+	//@GetMapping(value = "signs/topPage")
+	//public String displayAdd(Model model) {
+		//List<UserInfo> allDate = userService.getList();
+		//model.addAttribute("allDate", allDate );
+		//model.addAttribute("userInfo", new UserInfo());
+		//return "topPage";
+	//}
 	
-	@PostMapping("/")
+	@PostMapping(value="/")
 	public String createUser(@Valid UserInfo userInfo, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
-			//List<UserInfo> errorList = userService.getList(); 
-			List<String> errorList = new ArrayList<String>();
+			List<UserInfo> allDate = userService.getList(); 
+			//List<String> errorList = new ArrayList<String>();
 			//入力チェックエラーの記述を行った（21/9/21）
-			for (ObjectError error : bindingResult.getAllErrors()) {
-			//model.addAttribute("allDate", errorDate);
-			//model.addAttribute("userInfo",userInfo);
-				errorList.add(error.getDefaultMessage());
+			//for (ObjectError error : bindingResult.getAllErrors()) {
+				model.addAttribute("allDate", allDate);
+				model.addAttribute("userInfo",userInfo);
+				return "signs/topPage";
 			}
-			model.addAttribute("validationError", errorList);
+			model.addAttribute("validationError", allDate);
 			return "signs/topPage";
 		}
 		
@@ -68,12 +68,12 @@ public class UserController {
 		return "signs/topPage";
 	}
 	
-	@PostMapping("/signs/[schedule]")
+	@PostMapping("signs/topPage/{schedule}")
 	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
 		UserInfo updateUserInfo = userService.findById(Id);
 		updateUserInfo.getSchedule();
 		userService.addInfo(updateUserInfo);
-		return "redirect:/";
+		return "redirect:/signs/topPage";
 	}
 }
 
