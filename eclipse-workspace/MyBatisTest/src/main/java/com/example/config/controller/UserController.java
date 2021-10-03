@@ -16,7 +16,6 @@ import org.springframework.validation.ObjectError;
 
 import com.example.config.domain.UserInfo;
 import com.example.config.service.UserService;
-import com.example.config.dto.UserResponse;
 
 
 @Controller
@@ -26,7 +25,7 @@ public class UserController {
 	UserService userService;
 	
 	//DBから取得したデータをオブジェクトへ
-	@GetMapping(value="signs/topPage")
+	@GetMapping(value="files/topPage")
 	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
@@ -36,7 +35,7 @@ public class UserController {
 //		allDate.add(userInfo);
 		model.addAttribute("allDate", allDate);
 		model.addAttribute("userInfo", new UserInfo());
-		return "signs/list";
+		return "files/list";
 	}
 	
 	
@@ -48,7 +47,7 @@ public class UserController {
 		//return "topPage";
 	//}
 	
-	@PostMapping(value="/")
+	@PostMapping("/")
 	public String createUser(@Valid UserInfo userInfo, BindingResult bindingResult, Model model) {
 		
 		if(bindingResult.hasErrors()) {
@@ -58,22 +57,22 @@ public class UserController {
 			//for (ObjectError error : bindingResult.getAllErrors()) {
 				model.addAttribute("allDate", allDate);
 				model.addAttribute("userInfo",userInfo);
-				return "signs/topPage";
-			}
-			model.addAttribute("validationError", allDate);
-			return "signs/topPage";
+				return "files/topPage";
+			//}
+			//model.addAttribute("validationError", allDate);
+			//return "signs/topPage";
 		}
 		
 		userService.addInfo(userInfo);
-		return "signs/topPage";
+		return "files/topPage";
 	}
 	
-	@PostMapping("signs/topPage/{schedule}")
+	@PostMapping("files/topPage/schedule")
 	public String scheduleUser(@RequestParam(name = "id") Integer Id) {
 		UserInfo updateUserInfo = userService.findById(Id);
 		updateUserInfo.getSchedule();
 		userService.addInfo(updateUserInfo);
-		return "redirect:/signs/topPage";
+		return "redirect:/files/topPage";
 	}
 }
 
