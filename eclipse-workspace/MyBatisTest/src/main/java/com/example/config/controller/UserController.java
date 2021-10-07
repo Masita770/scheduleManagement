@@ -26,7 +26,7 @@ public class UserController {
 	
 	//DBから取得したデータをオブジェクトへ
 	//ここのreturnの行き先変更で実行で始めに表示されるページが変わる
-	@GetMapping(value="files/topPage")
+	@GetMapping(value="files/list")
 	public String gettopPage(Model model) {
 		List<UserInfo> allDate = userService.getList();
 //		List<UserInformation> allDate = new ArrayList();
