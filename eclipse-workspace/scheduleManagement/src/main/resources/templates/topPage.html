@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+	<head>
+		<h1>制作中</h1>
+	</head>
+	<body>
+		<div class="create-data">
+			<form method="POST" th:action="@{/topPage}" th:object="${data}">
+				<p th:errors="*{name}" class="data-error-message"></p>
+				
+				<input type="text" th:field="*{schedule}">
+				<button type="submit">登録</button>
+			</form>
+		</div>
+		
+		<div th:each="data : ${allDate}">
+			<p th:text="${data.id}"></p>
+			<p th:text="${data.name}">さん</p>
+		</div>
+	</body>
+</html>
+	

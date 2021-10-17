@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang= "ja">
+<html xmlns:th="http://www.thymeleaf.org">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<body>
+		<div class="container">
+			<h1>ユーザー</h1>
+			<div class="float-end">
+				<a href="#{files/topPage.html}" class="btn">新規登録</a>
+				<a id="files/topPage.html"></a>
+			</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+						<th>予定</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user : ${userResponse}" th:object="${user}" class="aligen-middle">
+						<td th:text="*{id}"></td>
+						<td th:text="*{name}"></td>
+						<td th:text="*{schedule}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
+			
