@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS users (
-	id int NOT NULL PRIMARY KEY,
+	id int NOT NULL AUTO_INCREMENT,
 	name varchar(10),
-	age int 
+	age int,
+	PRIMARY KEY(id)
 );

@@ -27,7 +27,7 @@ public interface DemoMapper {
 	 * @param cari
 	 */
 	
-	@Insert("INSERT INTO users (id, name, age) VALUES (?, ?, ?), [4, '野島', 21]")
+	//@Insert("INSERT INTO users (id, name, age) VALUES (?, ?, ?), [4, '野島', 21]")
 	public void create(DemoInfo demoInfo);
 
 	DemoInfo createCheck(DemoInfo demoInfo);
