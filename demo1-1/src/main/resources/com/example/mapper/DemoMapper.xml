@@ -6,7 +6,7 @@
 	<select id="selectAll" resultType="com.example.domain.DemoInfo">
 		SELECT * FROM users ORDER BY age DESC
 	</select>
-	<insert id="create" parameterType="com.example.domain.DemoInfo"> 
+	<insert id="create" useGeneratedKeys="true" keyProperty="id"> 
 		INSERT into users (id,name,age) values (#{id},#{name},#{age})
 	</insert>
 </mapper>
