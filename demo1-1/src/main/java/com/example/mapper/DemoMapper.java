@@ -28,8 +28,8 @@ public interface DemoMapper {
 	 */
 	
 	//@Insert("INSERT INTO users (id, name, age) VALUES (?, ?, ?), [4, '野島', 21]")
-	public void create(DemoInfo demoInfo);
+	public void add(DemoInfo demoInfo);
 
-	DemoInfo createCheck(DemoInfo demoInfo);
+	//DemoInfo createCheck(DemoInfo demoInfo);
 
 }

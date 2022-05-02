@@ -37,10 +37,9 @@ public class DemoController {
 //		users.add(new DemoInfo(3, "美月", 41));
 		
 		model.addAttribute("list", users);
-		model.addAttribute("newUser", new DemoInfo());
+		model.addAttribute("demoInfo", new DemoInfo());
 		return "/list";
 	}
-	
 	@GetMapping("form")
 	String newUser(@RequestBody(required = false) Model model) {
 			return "/form";
@@ -51,12 +50,11 @@ public class DemoController {
 		if(bindingResult.hasErrors()) {
 		List<DemoInfo> users = service.getDemoList();
 		model.addAttribute("list", users);
-		model.addAttribute("newUser", demoInfo);
-		return "list";
+		model.addAttribute("demoInfo", demoInfo);
+		return "/list";
 		}
 	
 	service.create(demoInfo);
 	return "redirect:/list";
-	
 	}
 }

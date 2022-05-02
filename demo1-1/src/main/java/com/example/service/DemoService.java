@@ -18,7 +18,7 @@ public class DemoService {
 	 * 仮新規追加処理 2022/04/07
 	 */
 	public void create(DemoInfo demoInfo) {
-		mapper.create(demoInfo);
+		mapper.add(demoInfo);
 	}
 	//*仮作成
 //	public DemoInfo createCheck(DemoInfo cari) {

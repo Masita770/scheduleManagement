@@ -2,15 +2,15 @@ package com.example.domain;
 
 public class DemoInfo {
 	
-	private int id;
+	private Integer id;
 	private String name;
-	private int age;
+	private String age;
 	
-	public void DemoInfo(int id, String name, int age) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
-	}
+//	public void DemoInfo(Integer id, String name, Integer age) {
+//		this.id = id;
+//		this.name = name;
+//		this.age = age;
+//	}
 	
 	
 
@@ -18,14 +18,14 @@ public class DemoInfo {
 	 * IDを取得する
 	 * @return　ID
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * IDを設定する
 	 * @param id　ID
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
@@ -42,10 +42,10 @@ public class DemoInfo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	
